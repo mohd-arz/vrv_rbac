@@ -1,0 +1,5 @@
+{
+  "watch": ["routes","controller","*.ts"],
+  "ext": "js,ts,json",
+  "exec": "bun index.ts"
+}
