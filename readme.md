@@ -3,10 +3,17 @@
 ## Introduction
 This project demonstrates a **role-based access control system** built using React.js and Node.js. The aim was to explore a tech stack outside my current expertise (Laravel and Next.js) to broaden my skills and also frontend ui components was copied from my previous project.
 
-## Live Demo
+## Git 
+[GitHub](https://github.com/mohd-arz/vrv_rbac)
+
+
+## Other Similar Demo
+(Next.js) roles for buyer and seller, not well established..
 [Visit the live application](https://adoptapet-kappa.vercel.app/)
-[GitHub](https://github.com/mohd-arz/adoptapet)
+ -- [GitHub](https://github.com/mohd-arz/adoptapet)
+
 [Visit More Repos](https://github.com/mohd-arz/)
+
 ---
 
 ## Tech Stack
