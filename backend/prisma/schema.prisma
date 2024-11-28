@@ -22,6 +22,7 @@ model User{
   created_at DateTime @default(now())
   updated_at DateTime @default(now()) @updatedAt
   role Role @relation(fields: [role_id], references: [id])
+  products Product[]
 }
 
 model Role{
@@ -30,6 +31,8 @@ model Role{
   users User[]
   role_permissions RolePermission[]
 }
+
+//  Permission Models --
 
 model PermissionType{
   id Int @id @default(autoincrement())
@@ -52,4 +55,18 @@ model RolePermission{
   permission_id Int
   role Role @relation(fields: [role_id],references: [id])
   permission Permission @relation(fields: [permission_id],references: [id])
+}
+
+//Product Models 
+
+model Product{
+  id Int @id @default(autoincrement())
+  name String
+  description String?
+  status Boolean @default(true)
+  created_by Int
+  created_at DateTime @default(now())
+  updated_at DateTime @default(now()) @updatedAt
+  
+  user User @relation(fields: [created_by],references: [id])
 }

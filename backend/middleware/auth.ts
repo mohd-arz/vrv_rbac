@@ -64,6 +64,13 @@ export function checkPermission(perm: string) {
       res.status(401).json({ status: false, message: "Unauthorized" });
       return;
     }
+    if (perm == "admin") {
+      if (user.role_id == 1) return next();
+      else {
+        res.status(401).json({ status: false, message: "Unauthorized" });
+        return;
+      }
+    }
     if (user.role_id === 1) {
       return next();
     }

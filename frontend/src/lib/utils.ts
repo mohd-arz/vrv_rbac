@@ -6,6 +6,10 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 export function checkPermission(user: any, perms: any, perm: any) {
+  if (perm == "admin") {
+    if (user.role_id == 1) return true;
+    else return false;
+  }
   if (user.role_id == 1) {
     return true;
   }

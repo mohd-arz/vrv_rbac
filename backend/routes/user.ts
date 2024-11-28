@@ -6,11 +6,13 @@ import {
   register,
 } from "../controller/user_controller";
 import { auth, checkPermission } from "../middleware/auth";
-import { login } from "../controller/auth_controller";
+import { login, logout } from "../controller/auth_controller";
 
 const userRouter = express.Router();
 
 userRouter.post("/login", login);
+
+userRouter.get("/logout", logout);
 
 userRouter.post("/register", auth, checkPermission("create-users"), register);
 

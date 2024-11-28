@@ -57,21 +57,10 @@ export default function SignIn() {
       }}
     >
       <div className="mx-auto flex flex-col items-center justify-center px-6 py-8 md:h-screen lg:py-0">
-        <a
-          href="#"
-          className="mb-6 flex items-center text-2xl font-semibold text-gray-900 dark:text-white"
-        >
-          <img
-            className="mr-2 h-8 w-8"
-            src="/assets/android-chrome-512x512.png"
-            alt="logo"
-          />
-          Best Friend
-        </a>
         <div className="w-full rounded-lg bg-white shadow dark:border dark:border-gray-700 dark:bg-gray-800 sm:max-w-md md:mt-0 xl:p-0">
           <div className="space-y-4 p-6 sm:p-8 md:space-y-6">
             <h1 className="text-xl font-semibold leading-tight text-center tracking-tight text-gray-900 dark:text-white md:text-2xl">
-              Welcome Seller !
+              Welcome !
             </h1>
             <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 dark:text-white md:text-2xl">
               Login
@@ -91,7 +80,7 @@ export default function SignIn() {
                   name="username"
                   id="username"
                   className="focus:ring-primary-600 focus:border-primary-600 block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
-                  placeholder="name@company.com"
+                  placeholder="username"
                   required
                 />
               </div>

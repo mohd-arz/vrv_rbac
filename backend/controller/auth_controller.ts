@@ -64,3 +64,19 @@ export async function login(req: Request, res: Response) {
     res.status(422).json({ status: false, message: err.issues });
   }
 }
+
+export async function logout(req: Request, res: Response) {
+  try {
+    res.cookie("auth_token", "", {
+      maxAge: 0,
+      // httpOnly: true,  // commented so that postman can have cookie
+      secure: false,
+      sameSite: "lax",
+    });
+
+    res.status(200).json({ status: true, message: "Logged out successfully" });
+  } catch (err: any) {
+    log(JSON.stringify(err.issues));
+    res.status(422).json({ status: false, message: "Something went wrong" });
+  }
+}

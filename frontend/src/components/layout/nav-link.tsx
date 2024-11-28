@@ -4,6 +4,7 @@ import clsx from "clsx";
 import { Link, useLocation } from "react-router";
 import { FaRegUser } from "react-icons/fa";
 import { IoLockOpenOutline } from "react-icons/io5";
+import { FiShoppingCart } from "react-icons/fi";
 import { useRecoilValue } from "recoil";
 import { auth, permissions } from "@/atom/auth-atom";
 import { checkPermission } from "@/lib/utils";
@@ -17,10 +18,16 @@ const links = [
     permission: "listing-users",
   },
   {
+    name: "Products",
+    href: "/products",
+    icon: FiShoppingCart,
+    permission: "listing-products",
+  },
+  {
     name: "Permissions",
     href: "/permission",
     icon: IoLockOpenOutline,
-    permission: "",
+    permission: "admin",
   },
 ];
 

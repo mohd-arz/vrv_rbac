@@ -5,21 +5,45 @@ import {
   getPermissionTypes,
   getRoles,
   setRolePermission,
-  getExistingPermissions
+  getExistingPermissions,
 } from "../controller/permission_controller";
-import { auth } from "../middleware/auth";
+import { auth, checkPermission } from "../middleware/auth";
 const permissionRouter = express.Router();
 
-permissionRouter.post("/create-permission-type", auth, createPermissionType);
+permissionRouter.post(
+  "/create-permission-type",
+  auth,
+  checkPermission("admin"),
+  createPermissionType
+);
 
-permissionRouter.get("/get-permission-types", auth, getPermissionTypes);
+permissionRouter.get(
+  "/get-permission-types",
+  auth,
+  checkPermission("admin"),
+  getPermissionTypes
+);
 
-permissionRouter.post("/create-permission",auth,createPermission);
+permissionRouter.post(
+  "/create-permission",
+  auth,
+  checkPermission("admin"),
+  createPermission
+);
 
-permissionRouter.get("/get-roles",auth,getRoles);
+permissionRouter.get("/get-roles", auth, checkPermission("admin"), getRoles);
 
-permissionRouter.post("/set-role-permission/:id",auth,setRolePermission);
+permissionRouter.post(
+  "/set-role-permission/:id",
+  auth,
+  checkPermission("admin"),
+  setRolePermission
+);
 
-permissionRouter.get("/get-existing-perms/:id",getExistingPermissions);
+permissionRouter.get(
+  "/get-existing-perms/:id",
+  checkPermission("admin"),
+  getExistingPermissions
+);
 
 export default permissionRouter;

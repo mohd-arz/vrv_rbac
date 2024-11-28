@@ -6,8 +6,11 @@ import { RecoilRoot } from "recoil";
 import ProtectedRoute from "./pages/auth/protected-route";
 import UserPage from "./pages/user";
 import CreatePage from "./pages/user/create";
+import CreateProductPage from "./pages/product/create";
 import PermissionPage from "./pages/permission";
 import EditPage from "./pages/permission/edit";
+import ProductPage from "./pages/product";
+import NotFound from "./pages/not-found";
 
 function App() {
   return (
@@ -44,12 +47,45 @@ function App() {
                   }
                 />
               </Route>
+              <Route path="/products">
+                <Route
+                  index
+                  element={
+                    <ProtectedRoute perm="listing-products">
+                      <ProductPage />
+                    </ProtectedRoute>
+                  }
+                />
+                <Route
+                  path="create"
+                  element={
+                    <ProtectedRoute perm="create-products">
+                      <CreateProductPage />
+                    </ProtectedRoute>
+                  }
+                />
+              </Route>
 
               <Route path="permission">
-                <Route index element={<PermissionPage />} />
-                <Route path=":id/edit" element={<EditPage />} />
+                <Route
+                  index
+                  element={
+                    <ProtectedRoute perm="admin">
+                      <PermissionPage />
+                    </ProtectedRoute>
+                  }
+                />
+                <Route
+                  path=":id/edit"
+                  element={
+                    <ProtectedRoute perm="admin">
+                      <EditPage />
+                    </ProtectedRoute>
+                  }
+                />
               </Route>
             </Route>
+            <Route path="*" element={<NotFound />}></Route>
           </Routes>
         </BrowserRouter>
       </RecoilRoot>

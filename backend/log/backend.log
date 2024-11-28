@@ -68,4 +68,7 @@ Invalid `prisma.user.create()` invocation:
 
 Unique constraint failed on the fields: (`username`)
     
+    [7:43:06 AM : 11/28/2024]
+    [{"code":"invalid_type","expected":"string","received":"undefined","path":["name"],"message":"Required"}]
+    
     
