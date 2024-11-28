@@ -5,16 +5,16 @@ import {
   me,
   register,
 } from "../controller/user_controller";
-import { auth } from "../middleware/auth";
+import { auth, checkPermission } from "../middleware/auth";
 import { login } from "../controller/auth_controller";
 
 const userRouter = express.Router();
 
 userRouter.post("/login", login);
 
-userRouter.post("/register", register);
+userRouter.post("/register", auth, checkPermission("create-users"), register);
 
-userRouter.get("/get-users", auth, getUsers);
+userRouter.get("/get-users", auth, checkPermission("listing-users"), getUsers);
 
 userRouter.get("/me", auth, me);
 

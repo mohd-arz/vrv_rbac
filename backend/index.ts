@@ -4,6 +4,7 @@ import userRoutes from "./routes/user";
 import cookieParser from "cookie-parser";
 import cors from "cors";
 import log from "./log/log";
+import permissionRouter from "./routes/permission";
 dotenv.config();
 
 const port = process.env.NODE_PORT;
@@ -22,6 +23,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.use("/api/v1/user", userRoutes);
+app.use("/api/v1/permission", permissionRouter);
 
 app.use((err: any, req: Request, res: Response, next: any) => {
   log(err.stack);

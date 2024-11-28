@@ -16,4 +16,8 @@ const auth = atom({
   default: <User | null>null,
 });
 
-export { auth };
+const permissions = atom({
+  key: "perms",
+  default: [],
+});
+export { auth, permissions };

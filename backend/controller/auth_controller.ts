@@ -14,7 +14,15 @@ export async function login(req: Request, res: Response) {
         username: validatedUser.username,
       },
       include: {
-        role: true,
+        role: {
+          include: {
+            role_permissions: {
+              include: {
+                permission: true,
+              },
+            },
+          },
+        },
       },
     });
     if (!user) {
@@ -41,7 +49,7 @@ export async function login(req: Request, res: Response) {
 
     res.cookie("auth_token", token, {
       maxAge: 3 * 60 * 60 * 1000,
-      httpOnly: true,
+      // httpOnly: true,  // commented so that postman can have cookie
       secure: false,
       sameSite: "lax",
     });

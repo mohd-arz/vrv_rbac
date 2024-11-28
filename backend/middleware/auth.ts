@@ -31,7 +31,15 @@ export async function auth(req: Request, res: Response, next: NextFunction) {
           id: verified.user_id,
         },
         include: {
-          role: true,
+          role: {
+            include: {
+              role_permissions: {
+                include: {
+                  permission: true,
+                },
+              },
+            },
+          },
         },
       });
 
@@ -47,4 +55,26 @@ export async function auth(req: Request, res: Response, next: NextFunction) {
   } catch (err) {
     res.status(422).json({ status: false, message: "Something went wrong" });
   }
+}
+
+export function checkPermission(perm: string) {
+  return async (req: Request, res: Response, next: NextFunction) => {
+    const { user } = req;
+    if (!user) {
+      res.status(401).json({ status: false, message: "Unauthorized" });
+      return;
+    }
+    if (user.role_id === 1) {
+      return next();
+    }
+    const perms = user?.role.role_permissions.map(
+      (permission) => permission.permission.slug
+    );
+    if (perms?.includes(perm)) {
+      next();
+      return;
+    }
+    res.status(401).json({ status: false, message: "Unauthorized" });
+    return;
+  };
 }

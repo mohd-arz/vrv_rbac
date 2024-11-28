@@ -6,6 +6,8 @@ import { RecoilRoot } from "recoil";
 import ProtectedRoute from "./pages/auth/protected-route";
 import UserPage from "./pages/user";
 import CreatePage from "./pages/user/create";
+import PermissionPage from "./pages/permission";
+import EditPage from "./pages/permission/edit";
 
 function App() {
   return (
@@ -17,7 +19,7 @@ function App() {
             <Route
               path="/"
               element={
-                <ProtectedRoute>
+                <ProtectedRoute perm="">
                   <Layout />
                 </ProtectedRoute>
               }
@@ -25,8 +27,27 @@ function App() {
               <Route index element={<HomePage />}></Route>
 
               <Route path="/users">
-                <Route index element={<UserPage />} />
-                <Route path="create" element={<CreatePage />} />
+                <Route
+                  index
+                  element={
+                    <ProtectedRoute perm="listing-users">
+                      <UserPage />
+                    </ProtectedRoute>
+                  }
+                />
+                <Route
+                  path="create"
+                  element={
+                    <ProtectedRoute perm="create-users">
+                      <CreatePage />
+                    </ProtectedRoute>
+                  }
+                />
+              </Route>
+
+              <Route path="permission">
+                <Route index element={<PermissionPage />} />
+                <Route path=":id/edit" element={<EditPage />} />
               </Route>
             </Route>
           </Routes>

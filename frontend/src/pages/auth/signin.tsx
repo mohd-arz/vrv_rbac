@@ -4,12 +4,13 @@ import { Toaster } from "@/components/ui/toaster";
 import { useToast } from "@/hooks/use-toast";
 import axios from "axios";
 import { useSetRecoilState } from "recoil";
-import { auth } from "@/atom/auth-atom";
+import { auth, permissions } from "@/atom/auth-atom";
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
 export default function SignIn() {
   const navigate = useNavigate();
   const setAuth = useSetRecoilState(auth);
+  const setPerms = useSetRecoilState(permissions);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -27,7 +28,14 @@ export default function SignIn() {
       });
       if (res.status == 200) {
         toast({ description: "Login Successfully." });
-        setAuth(res.data.user);
+        setAuth(res.data?.user);
+        const perms = res.data?.user?.role?.role_permissions.map(
+          (perms: any) => {
+            return perms?.permission?.slug;
+          }
+        );
+        setPerms(perms);
+        console.log(perms);
         setTimeout(() => {
           navigate("/", { replace: true });
         }, 1000);
