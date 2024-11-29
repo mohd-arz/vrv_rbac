@@ -42,8 +42,10 @@ permissionRouter.post(
 
 permissionRouter.get(
   "/get-existing-perms/:id",
+    auth,
   checkPermission("admin"),
   getExistingPermissions
 );
+
 
 export default permissionRouter;
