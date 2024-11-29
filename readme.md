@@ -29,6 +29,7 @@ This project demonstrates a **role-based access control system** built using Rea
 - **Authentication**: Secure login/logout functionality using JWT.
 - **Data Management**: User and product data stored in a PostgreSQL database using Prisma ORM.
 - **Performance**: Experimented with Bun for faster runtime performance.
+-  Deployment to AWS for scalability and reliability (on feat/deployment branch).
 
 ---
 
@@ -36,7 +37,6 @@ This project demonstrates a **role-based access control system** built using Rea
 Due to time constraints, the following features are planned for future implementation:
 - Edit/Delete functionality for users and products.
 - Docker support for containerization.
-- Deployment to AWS for scalability and reliability.
 
 ---
 
