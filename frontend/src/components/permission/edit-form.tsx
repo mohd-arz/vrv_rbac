@@ -48,7 +48,7 @@ type PermissionT = {
 export default function FormComponent(): JSX.Element {
   const params = useParams();
   const [permissionTypes, setPermissionTypes] = useState<permisionTypeT[]>([]);
-  const [existingPerms, setExistingPerms] = useState<number[]>([]);
+  const [, setExistingPerms] = useState<number[]>([]);
   const [selectedPerms, setSelectedPerms] = useState<number[]>([]);
   const [isPending, setIsPending] = useState(false);
 

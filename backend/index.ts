@@ -6,6 +6,7 @@ import cors from "cors";
 import log from "./log/log";
 import permissionRouter from "./routes/permission";
 import productRouter from "./routes/product";
+import path from "path";
 
 dotenv.config();
 
@@ -27,6 +28,14 @@ app.use(express.json());
 app.use("/api/v1/user", userRoutes);
 app.use("/api/v1/permission", permissionRouter);
 app.use("/api/v1/product", productRouter);
+
+const buildPath = path.join(__dirname, "../frontend/dist");
+
+app.use(express.static(buildPath));
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(buildPath, "index.html"));
+});
 
 app.use((err: any, req: Request, res: Response, next: any) => {
   log(err.stack);

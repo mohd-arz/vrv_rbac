@@ -71,4 +71,13 @@ Unique constraint failed on the fields: (`username`)
     [7:43:06 AM : 11/28/2024]
     [{"code":"invalid_type","expected":"string","received":"undefined","path":["name"],"message":"Required"}]
     
+    [7:44:37 AM : 11/29/2024]
+    undefined
+    
+    [7:45:05 AM : 11/29/2024]
+    undefined
+    
+    [7:48:27 AM : 11/29/2024]
+    [{"code":"too_small","minimum":8,"type":"string","inclusive":true,"exact":false,"message":"Password must contains 8 characters","path":["password"]}]
+    
     
