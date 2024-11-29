@@ -8,7 +8,7 @@ This project demonstrates a **role-based access control system** built using Rea
 
 
 ## Other Similar Demo
-(Next.js) roles for buyer and seller, not well established..
+(Next.js) roles for buyer and seller, not well established (using next-auth)
 [Visit the live application](https://adoptapet-kappa.vercel.app/)
  -- [GitHub](https://github.com/mohd-arz/adoptapet)
 
@@ -18,7 +18,7 @@ This project demonstrates a **role-based access control system** built using Rea
 
 ## Tech Stack
 - **Frontend**: React.js with TypeScript
-- **Backend**: Node.js
+- **Backend**: Node.js, Express
 - **Database**: PostgreSQL (via Prisma ORM)
 - **Runtime**: Bun
 
